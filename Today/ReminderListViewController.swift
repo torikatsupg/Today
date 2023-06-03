@@ -8,8 +8,8 @@
 import UIKit
 
 class ReminderListViewController: UICollectionViewController {
-    
     var dataSource: DataSource!
+    var reminders: [Reminder] = Reminder.sampleData
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class ReminderListViewController: UICollectionViewController {
         
         var snapshot = Snapshot()
         snapshot.appendSections([0])
-        snapshot.appendItems(Reminder.sampleData.map(\.title))
+        snapshot.appendItems(reminders.map(\.id))
         dataSource.apply(snapshot)
 
         collectionView.dataSource = dataSource
