@@ -44,13 +44,6 @@ class TextFieldContentView: UIView, UIContentView {
         textField.text = configuration.text
     }
     
-    func titleConfiguration(for cell: UICollectionViewListCell, with title: String?)
-    -> TextFieldContentView.Configuration
-    {
-        var contentConfiguration = cell.textFieldConfiguration()
-        contentConfiguration.text = title
-        return contentConfiguration
-    }
 }
 
 extension UICollectionViewListCell {
