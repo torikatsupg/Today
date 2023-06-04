@@ -3,4 +3,54 @@
    uuid = "381B508A-9BC2-4A33-BBC8-5E501ABA0723"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07599CF4-58D1-4012-B3A9-3FFC846F97D8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Today/ContentViews/DatePickerContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "configure(configuration:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "07599CF4-58D1-4012-B3A9-3FFC846F97D8 - fd0eb2be3eab93ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Today.DatePickerContentView.configure(configuration: UIKit.UIContentConfiguration) -&gt; ()"
+                  moduleName = "Today"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/torikatsu/ghq/github.com/torikatsupg/Today/Today/ContentViews/DatePickerContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "228">
+               </Location>
+               <Location
+                  uuid = "07599CF4-58D1-4012-B3A9-3FFC846F97D8 - fd0eb2be3eab93ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Today.DatePickerContentView.configure(configuration: UIKit.UIContentConfiguration) -&gt; ()"
+                  moduleName = "Today"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/torikatsu/ghq/github.com/torikatsupg/Today/Today/ContentViews/DatePickerContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "532">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
