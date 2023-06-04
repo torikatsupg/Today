@@ -18,6 +18,7 @@ class ReminderViewController: UICollectionViewController {
         self.reminder = reminder
         var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         listConfiguration.showsSeparators = false
+        listConfiguration.headerMode = .firstItemInSection
         let listLayout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
         super.init(collectionViewLayout: listLayout)
     }
@@ -31,7 +32,8 @@ class ReminderViewController: UICollectionViewController {
         let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
         dataSource = DataSource(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Row) in
-            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            return collectionView.dequeueConfiguredReusableCell(
+                using: cellRegistration, for: indexPath, item: itemIdentifier)
         }
         
         if #available(iOS 16, *) {
@@ -55,6 +57,10 @@ class ReminderViewController: UICollectionViewController {
     func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, row: Row) {
         let section = section(for: indexPath)
         switch(section, row) {
+        case (_, .header(let title)):
+            var contentConfiguration = cell.defaultContentConfiguration()
+            contentConfiguration.text = title
+            cell.contentConfiguration = contentConfiguration
         case (.view, _):
             var contentConfiguration = cell.defaultContentConfiguration()
             contentConfiguration.text = text(for: row)
@@ -64,11 +70,6 @@ class ReminderViewController: UICollectionViewController {
         default:
             fatalError("Unexpected combination of section and row.")
         }
-        var contentConfiguration = cell.defaultContentConfiguration()
-        contentConfiguration.text = text(for: row)
-        contentConfiguration.textProperties.font = UIFont.preferredFont(forTextStyle: row.textStyle)
-        contentConfiguration.image = row.image
-        cell.contentConfiguration = contentConfiguration
         cell.tintColor = .todayPrimaryTint
     }
     
@@ -78,19 +79,24 @@ class ReminderViewController: UICollectionViewController {
         case .notes: return reminder.notes
         case .time: return reminder.dueDate.formatted(date: .omitted, time: .shortened)
         case .title: return reminder.title
+        default: return nil
         }
     }
     
     private func updateSnapshotForEdiging() {
         var snapshot = Snapshot()
         snapshot.appendSections([.title, .date, .notes])
+        snapshot.appendItems([.header(Section.title.name)], toSection: .title)
+        snapshot.appendItems([.header(Section.date.name)], toSection: .date)
+        snapshot.appendItems([.header(Section.notes.name)], toSection: .notes)
         dataSource.apply(snapshot)
+        
     }
     
     private func updateSnapshotForViewing() {
         var snapshot = Snapshot()
         snapshot.appendSections([.view])
-        snapshot.appendItems(([Row.title, Row.date, Row.time, Row.notes]), toSection: .view)
+        snapshot.appendItems(([Row.header(""), Row.title, Row.date, Row.time, Row.notes]), toSection: .view)
         dataSource.apply(snapshot)
     }
     
